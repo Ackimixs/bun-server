@@ -1,3 +1,5 @@
+import {HeadersInit} from "undici-types/fetch";
+
 export interface RouteOptions {
     isFile?: boolean;
     filePath?: string;
@@ -13,6 +15,12 @@ export interface GlobalConfig {
     }
 
     port?: string | number;
+}
+
+export interface ResponseInit {
+    status?: number
+    statusText?: string
+    headers?: HeadersInit
 }
 
 export class myRequest extends Request {
