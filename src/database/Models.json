@@ -1,0 +1,39 @@
+{
+  "article": {
+    "fields": {
+      "id": {
+        "type": "INTEGER",
+        "required": true,
+        "primaryKey": true,
+        "autoIncrement": true,
+        "unique": true
+      },
+      "name": {
+        "type": "TEXT",
+        "required": true
+      },
+      "price": {
+        "type": "DECIMAL",
+        "required": true
+      }
+    }
+  },
+  "order": {
+    "fields": {
+      "id": {
+        "type": "INTEGER",
+        "required": true,
+        "primaryKey": true,
+        "autoIncrement": true,
+        "unique": true
+      },
+      "date": {
+          "type": "TEXT",
+          "required": true
+      },
+      "total": {
+          "type": "DECIMAL"
+      }
+    }
+  }
+}

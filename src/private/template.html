@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.addEventListener('load', () => {
+            loadLink();
+        })
+
+        const loadLink = () => {
+            const a = document.querySelectorAll('a');
+
+            a.forEach((el) => {
+                el.addEventListener('click', (e) => {
+                    const toRoute = e.target.getAttribute('href');
+                    if (toRoute.startsWith('/')) {
+                        e.preventDefault();
+                        fetch(toRoute, { headers: { "accept": "raw/html" }})
+                            .then(response => response.text())
+                            .then(text => {
+                                document.body.innerHTML = text
+                                window.history.pushState({}, '', toRoute);
+                                window.scrollTo(0, 0);
+                                el.removeEventListener('click', loadLink);
+                                loadLink();
+                            });
+                    }
+                })
+            })
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
